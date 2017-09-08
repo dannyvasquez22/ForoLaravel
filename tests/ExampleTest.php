@@ -13,7 +13,11 @@ class ExampleTest extends TestCase
      */
     public function testBasicExample()
     {
-        $this->visit('/')
-             ->see('Laravel');
+
+        $user = factory(\App\User::class)->create();
+
+        $this->actingAs($user, 'api')
+             ->visit('api/user')
+             ->see('Danny Vásquez');
     }
 }
